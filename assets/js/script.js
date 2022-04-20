@@ -1,23 +1,30 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
 
-// 这是总function,等全部写完了就把}全部括起来
+// main function to generate the random password
 const generatePassword = () => {
+
+  // calling the password length function
   const passwordLength = getPasswordLength();
+
   if(passwordLength){
+    // calling the password Criteria function
     const passwordCriteria = getPasswordCriteria();
-    console.log(passwordCriteria);
+
     if(passwordCriteria.length === 0){
       alert("please at least choose one")
     }else{
-      console.log("keep going!")
+      // calling the random password generation function
+      const randomPassword = getRandomPassword(passwordLength, passwordCriteria);
+      return randomPassword;
     };
   }else{
+    // This is when the users' input is not right
     alert("please enter the password again.")
   }
 };
 
-// main function to generate the random password
+// get the password length function
 const getPasswordLength = () => {
   const passwordLength = prompt("how long would you like your password to be?");
   const passwordLengthNum = parseInt(passwordLength,10);
@@ -26,6 +33,7 @@ const getPasswordLength = () => {
   }
 };
 
+//   get the password criteria function
 const getPasswordCriteria = () => {
   const lowercase=confirm("Would you like to include lowercases in your password?");
   const uppercase=confirm("Would you like to include uppercases in your password?");
@@ -47,19 +55,23 @@ const getPasswordCriteria = () => {
   return passwordCriteriaArray;
 };
 
+ // create random password function
+const getRandomPassword = (passwordLength, passwordCriteria) => {
+  const passwordArray = [];
+  for(let i = 0;i < passwordLength; i+=1){
+    // select random catogoeies from the array
+    const randomCategoryIndex = Math.floor(Math.random()* passwordCriteria.length);
+    // get random cetegories
+    const randomCategory = passwordCriteria[randomCategoryIndex];
+    // get random index
+    const randomIndex = Math.floor(Math.random()* randomCategory.length);
+    // get random character
+    const randomCharacter = randomCategory.charAt(randomIndex)
+    passwordArray.push(randomCharacter);
+  }
+  return passwordArray.join("");
+};
 
-// const createRandomPassword = () => {
-//   return null;
-// };
-
-
-//   get the password criteria
-//   const passwordCriteria = getPasswordCriteria();
-
-  // create random password
-//   const password = createRandomPassword(passwordLength, passwordCriteria);
-//   return password;
-// };
 
 // Write password to the #password input
 const writePassword = () => {
