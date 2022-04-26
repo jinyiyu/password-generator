@@ -1,35 +1,17 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
 
-// main function to generate the random password
-const generatePassword = () => {
-
-  // calling the password length function
-  const passwordLength = getPasswordLength();
-
-  if(passwordLength){
-    // calling the password Criteria function
-    const passwordCriteria = getPasswordCriteria();
-
-    if(passwordCriteria.length === 0){
-      alert("please at least choose one")
-    }else{
-      // calling the random password generation function
-      const randomPassword = getRandomPassword(passwordLength, passwordCriteria);
-      return randomPassword;
-    };
-  }else{
-    // This is when the users' input is not right
-    alert("please enter the password again.")
-  }
-};
-
 // get the password length function
 const getPasswordLength = () => {
   const passwordLength = prompt("how long would you like your password to be?");
   const passwordLengthNum = parseInt(passwordLength,10);
   if (passwordLengthNum>=8 && passwordLengthNum<=128){
     return passwordLengthNum;
+  }else{
+      // This is when the users' input is not right
+      alert("please enter the password again.")
+      window.location.reload(true);
+      document.getElementById("password").reset();
   }
 };
 
@@ -72,6 +54,28 @@ const getRandomPassword = (passwordLength, passwordCriteria) => {
   return passwordArray.join("");
 };
 
+// main function to generate the random password
+const generatePassword = () => {
+
+  // calling the password length function
+  const passwordLength = getPasswordLength();
+
+  if(passwordLength){
+    console.log("hello")
+    // calling the password Criteria function
+    const passwordCriteria = getPasswordCriteria();
+
+    if(passwordCriteria.length === 0){
+      alert("please at least choose one characters to include in your random generated password, please click ok to start again")
+      window.location.reload(true);
+      document.getElementById("password").reset();
+    }else{
+      // calling the random password generation function
+      const randomPassword = getRandomPassword(passwordLength, passwordCriteria);
+      return randomPassword;
+    };
+  }
+};
 
 // Write password to the #password input
 const writePassword = () => {
@@ -83,3 +87,4 @@ const writePassword = () => {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
