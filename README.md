@@ -1,7 +1,6 @@
 # Password-Generator
 
 ## Links to the Project
----
 
 Link to the Github Repository: [https://github.com/jinyiyu/password-generator]
 
@@ -88,7 +87,7 @@ The following screenshots in the taggle list show the web application's appearan
 <br>
 
 ## Technology Used
----
+
 - Visual Studio Code
 - Github
 - HTML
@@ -98,7 +97,6 @@ The following screenshots in the taggle list show the web application's appearan
 <br>
 
 ## How To Contact Me
----
 
 - Email: yujinyiicxk@gmail.com
 - Github: https://github.com/jinyiyu
@@ -107,5 +105,5 @@ The following screenshots in the taggle list show the web application's appearan
 <br>
 
 ## Authored by
----
+
 ### __Jinyi Yu__
